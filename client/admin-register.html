@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="api.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body style="background: #f6f5f7;">
+    <h2 style="text-align:center; font-family: 'Montserrat', sans-serif; margin-top: 30px;">Create Admin Account</h2>
+    <div class="container" id="container" style="margin-top: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+        <div class="form-container sign-in-container" style="width: 50%; float: left; background: #fff; border-radius: 10px 0 0 10px; min-height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            
+            <form id="admin-register-form" style="width: 100%; max-width: 320px;">
+                <h1 style="font-size: 2rem; margin-bottom: 10px;">Sign Up</h1>
+                
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" required />
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required />
+                <input type="email" id="email" name="email" placeholder="Email" required />
+                <input type="password" id="password" name="password" placeholder="Password" required />
+
+                <p id="error-message" class="error-message"></p>
+                
+                <button type="submit" style="margin-top: 18px;">Register</button>
+
+                <p style="margin-top: 20px; font-size: 14px;">
+                    Already have an account? <a href="admin-login.html" style="color: var(--color4); text-decoration: none; font-weight: bold;">Login</a>
+                </p>
+            </form>
+
+        </div>
+        <div class="overlay-panel overlay-right" style="width: 50%; float: left; background: linear-gradient(to right, #ff4b2b, #ff416c); color: #fff; border-radius: 0 10px 10px 0; min-height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <h1 style="font-size: 2rem; font-weight: bold;">Welcome!</h1>
+            <p style="margin: 20px 0 30px; font-size: 15px;">Create your teacher account to get started.</p>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+</html>

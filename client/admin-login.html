@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="api.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body style="background: #f6f5f7;">
+    <h2 style="text-align:center; font-family: 'Montserrat', sans-serif; margin-top: 30px;">Admin Login</h2>
+    <div class="container" id="container" style="margin-top: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+        <div class="form-container sign-in-container" style="width: 50%; float: left; background: #fff; border-radius: 10px 0 0 10px; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            
+            <form id="admin-login-form" style="width: 100%; max-width: 320px;">
+                <h1 style="font-size: 2rem; margin-bottom: 10px;">Login</h1>
+                <span style="font-size: 13px; color: #888;">Use your admin account</span>
+                
+                <input type="email" id="email" placeholder="Email" required style="margin-top: 10px;" />
+                <input type="password" id="password" placeholder="Password" required />
+
+                <p id="error-message" style="color: red; font-size: 14px; height: 16px; margin-top: 10px;"></p>
+                
+                <a href="#" style="font-size: 12px; color: #888; margin: 10px 0 0 0; display: block; text-align: left; text-decoration: none;">Forgot your password?</a>
+                <button type="submit" style="margin-top: 18px; background: #ff4b2b; color: #fff; border: none; border-radius: 20px; padding: 12px 45px; font-weight: bold; letter-spacing: 1px;">Login</button>
+
+                <!-- 
+                  --- CHANGE 1: ADDED A TEXT LINK TO THE REGISTRATION PAGE ---
+                  This is a standard UI practice to help new users.
+                -->
+                <p style="margin-top: 20px; font-size: 14px; color: #888;">
+                    Don't have an account? 
+                    <a href="admin-register.html" style="color: #ff4b2b; font-weight: bold; text-decoration: none;">Sign Up</a>
+                </p>
+            </form>
+        </div>
+        <div class="overlay-panel overlay-right" style="width: 50%; float: left; background: linear-gradient(to right, #ff4b2b, #ff416c); color: #fff; border-radius: 0 10px 10px 0; min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <h1 style="font-size: 2rem; font-weight: bold;">Hello, Teacher!</h1>
+            <p style="margin: 20px 0 30px; font-size: 15px;">New here? Create an account to get started.</p>
+
+            <!-- 
+              --- CHANGE 2: ADDED A "SIGN UP" BUTTON TO THE OVERLAY ---
+              This button now navigates the user to the new registration page.
+              The styling is designed to look like a "ghost button" which fits the UI.
+            -->
+            <button onclick="window.location.href='admin-register.html'" style="background: transparent; border-color: #fff;">
+                Sign Up
+            </button>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+</html>
+
