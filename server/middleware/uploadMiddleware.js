@@ -3,7 +3,7 @@ const path = require('path');
 
 // Set up storage engine for multer
 const storage = multer.diskStorage({
-    destination: './uploads/', // Folder to save the files
+    destination: './uploads/',
     filename: function(req, file, cb) {
         // Create a unique filename to avoid overwriting files
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
@@ -21,7 +21,6 @@ const upload = multer({
 
 // Check File Type function
 function checkFileType(file, cb) {
-    // Allowed extensions
     const filetypes = /jpeg|jpg|png|gif/;
     // Check extension
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());

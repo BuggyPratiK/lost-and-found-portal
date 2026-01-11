@@ -9,7 +9,6 @@ const itemRoutes = require('./routes/itemRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Connect to Database
 connectDB();
 
 // Middleware
@@ -18,7 +17,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve uploaded images statically
-// This makes images available via a URL like http://localhost:5000/uploads/image-name.jpg
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // API Routes

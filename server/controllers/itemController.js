@@ -25,9 +25,7 @@ const addItem = async (req, res) => {
         res.status(201).json(savedItem);
 
     } catch (error) {
-        // Log the detailed error on the server for debugging
         console.error('Error in addItem controller:', error);
-        // Send a generic, user-friendly error to the client
         res.status(500).json({ 
             message: "Server Error: Could not add item.", 
             error: error.message 
@@ -86,7 +84,6 @@ const getLostItems = async (req, res) => {
 
 const getCollectedItems = async (req, res) => {
     try {
-        // Find all items that have been marked as 'Collected'
         const items = await Item.find({ status: 'Collected' })
             .populate('uploadedBy', 'name')
             .sort({ uploadDate: -1 });
@@ -98,7 +95,7 @@ const getCollectedItems = async (req, res) => {
 };
 
 
-// --- Controller for 3rd Year Feature: Get Archived Items ---
+// --- Controller: Get Archived Items ---
 const getArchivedItems = async (req, res) => {
     try {
         const oneMonthAgo = new Date();
@@ -117,7 +114,7 @@ const getArchivedItems = async (req, res) => {
     }
 };
 
-// --- NEW CONTROLLER for 3rd Year Feature: Get Item Statistics ---
+// --- NEW CONTROLLER: Get Item Statistics ---
 const getItemStats = async (req, res) => {
     try {
         const stats = await Item.aggregate([
@@ -128,7 +125,6 @@ const getItemStats = async (req, res) => {
             // stage 2: group  the filtered documents by month and year
             {
                 $group: {
-                    // Group documents by month and year of the uploadDate
                     _id: {
                         year: { $year: "$uploadDate" },
                         month: { $month: "$uploadDate" }
@@ -139,7 +135,6 @@ const getItemStats = async (req, res) => {
             },
             //Stage 3: sort the results chronologically.
             {
-                // Sort the results chronologically
                 $sort: { "_id.year": 1, "_id.month": 1 }
             }
         ]);

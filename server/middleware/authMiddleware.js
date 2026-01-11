@@ -9,17 +9,13 @@ const authMiddleware = async (req, res, next) => {
     }
 
     try {
-        // Get token from header (e.g., "Bearer eyJhbGci...")
+        // Get token from header and verify it
         const token = req.headers.authorization.split(' ')[1];
 
-        // Verify the token using your secret key
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        // Find the teacher in the database using the ID from the token
-        // We also exclude the password from the data we attach to the request
         req.user = await Teacher.findById(decoded.id).select('-password');
         
-        // If no user is found with this ID, the token is invalid
         if (!req.user) {
             return res.status(401).json({ message: 'Not authorized, user not found' });
         }
@@ -28,7 +24,6 @@ const authMiddleware = async (req, res, next) => {
         next();
         
     } catch (error) {
-        // This block will catch any errors from jwt.verify (e.g., an expired token)
         console.error('Authentication error:', error.message);
         return res.status(401).json({ message: 'Not authorized, token failed' });
     }

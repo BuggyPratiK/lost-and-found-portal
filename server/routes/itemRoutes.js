@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-// Import middleware
 const authMiddleware = require('../middleware/authMiddleware');
 const upload = require('../middleware/uploadMiddleware'); // Standard practice to name the import 'upload'
 
@@ -11,7 +10,7 @@ const {
   addItem,
   getLostItems,
   getCollectedItems,
-  updateItemStatus, // This now correctly matches the controller function
+  updateItemStatus, 
   getArchivedItems,
   getItemStats
 } = require('../controllers/itemController');
@@ -19,13 +18,10 @@ const {
 
 // --- PUBLIC ROUTES (Accessible to Students without login) ---
 
-// GET /api/items/lost -> Fetches all currently lost items (not archived)
 router.get('/lost', getLostItems);
 
-// GET /api/items/collected -> Fetches all items in the "collected" history
 router.get('/collected', getCollectedItems);
 
-// GET /api/items/archived -> Fetches items older than 1 month (3rd Year Feature)
 router.get('/archived', getArchivedItems);
 
 

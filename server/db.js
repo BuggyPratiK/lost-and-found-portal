@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-require('dotenv').config(); // Ensures environment variables are loaded
+require('dotenv').config(); 
 
 // --- Schema Definitions ---
 
@@ -24,7 +24,7 @@ const teacherSchema = new mongoose.Schema({
         required: [true, 'Please provide a last name'],
     }
 }, {
-    timestamps: true // Adds createdAt and updatedAt timestamps
+    timestamps: true 
 });
 
 // Schema for Lost & Found Items
@@ -43,21 +43,21 @@ const itemSchema = new mongoose.Schema({
     },
     imagePath: {
         type: String,
-        required: [true, 'An image path is required'], // Stores the path to the uploaded image file
+        required: [true, 'An image path is required'], 
     },
     status: {
         type: String,
-        enum: ['Lost', 'Collected', 'Archived'], // The item can only have one of these statuses
-        default: 'Lost', // New items are 'Lost' by default
+        enum: ['Lost', 'Collected', 'Archived'], 
+        default: 'Lost', 
     },
     uploadDate: {
         type: Date,
-        default: Date.now, // Automatically sets the date when an item is created
+        default: Date.now, 
     },
     uploadedBy: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'Teacher', // Creates a reference to the Teacher model
+        ref: 'Teacher', 
     }
 }, {
     timestamps: true
@@ -78,12 +78,9 @@ const connectDB = async () => {
         console.log('MongoDB Connected successfully!');
     } catch (error) {
         console.error('MongoDB Connection Failed:', error.message);
-        // Exit process with failure
         process.exit(1);
     }
 };
-
-// --- Exports ---
 
 module.exports = {
     connectDB,
