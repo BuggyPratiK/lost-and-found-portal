@@ -4,12 +4,6 @@
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <!-- 
-      IMPORTANT: We include two script files now.
-      1. api.js: This file contains all the functions that communicate with our server.
-      2. script.js: This file will contain the logic specifically for this dashboard page.
-      'api.js' MUST be included before 'script.js' so its functions are available.
-    -->
     <script src="api.js" defer></script>
     <script src="script.js" defer></script>
 </head>
@@ -29,42 +23,21 @@
     <div class="page">
         <div style="width: 100%; max-width: 800px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <h1>Admin Dashboard</h1>
-            <!-- Added a simple logout button for user convenience -->
             <button id="logout-btn" class="btn" style="background-color: #ff4b2b;">Logout</button>
         </div>
-
-        <!-- 
-          - The form ID is now more specific: 'add-item-form'.
-          - REMOVED the onsubmit="addLostItem(event)" attribute. We will handle
-            the form submission cleanly in our new script.js file.
-        -->
         <form id="add-item-form" class="card">
             <h2>Add Lost Item</h2>
-
-            <!-- 
-              CRITICAL CHANGE: The 'name' attribute of each input MUST exactly match
-              the key the server expects. This is how the FormData object works.
-            -->
             <input type="text" id="description" name="description" class="input" placeholder="Item Description" required>
             <input type="text" id="foundLocation" name="foundLocation" class="input" placeholder="Where it was found" required>
             <input type="text" id="collectionLocation" name="collectionLocation" class="input" placeholder="Collection Point" required>
             
             <label for="itemImage" style="margin-top: 10px; font-weight: 500; text-align: left; width: 100%;">Item Image:</label>
-            <!-- 
-              CRITICAL CHANGE: The 'name' for the file input MUST be 'itemImage'
-              to match what our server's uploadMiddleware is configured to look for.
-            -->
             <input type="file" id="itemImage" name="itemImage" class="input" accept="image/*" required>
 
             <button type="submit" class="btn">Add Item</button>
         </form>
 
         <h2>Current Lost Items</h2>
-        <!-- 
-          - The grid's ID is now 'lost-items-grid' for clarity.
-          - REMOVED the body's onload attribute. The new script.js will
-            fetch data from the server and populate this grid when the page loads.
-        -->
         <div id="lost-items-grid" class="grid">
             <!-- Items from the database will be dynamically inserted here by script.js -->
         </div>

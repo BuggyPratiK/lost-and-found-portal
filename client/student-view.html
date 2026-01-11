@@ -6,37 +6,14 @@
     <title>Lost Items</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- 
-      IMPORTANT CHANGE: We now link to two JavaScript files.
-      1. api.js: This file handles all the communication with our backend server.
-      2. script.js: This file contains the logic specifically for this page.
-      
-      'api.js' MUST be included before 'script.js' because script.js uses the
-      functions that are defined in api.js. The 'defer' attribute ensures
-      the scripts run after the HTML is parsed.
-    -->
     <script src="api.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 
-<!-- 
-  CHANGE 1: Added a unique ID to the body tag.
-  Our new script.js file will check for this ID to know which page is currently active.
-  This allows us to use one script file for multiple pages.
-
-  CHANGE 2: Removed the onload="renderItems(...)" attribute.
-  Our new script.js will handle all the logic for fetching and displaying items
-  when the page loads, which is a much cleaner and more modern approach.
--->
 <body id="lost-items-page">
     <div class="page">
         <h1>Lost Items</h1>
         <a href="history.html" class="link">View Collected Items</a>
-        
-        <!-- 
-          This is the container where our script.js will dynamically create and
-          insert the cards for each lost item fetched from the database.
-        -->
         <div id="lost-list" class="grid">
             <!-- Item cards will be generated here by JavaScript -->
         </div>

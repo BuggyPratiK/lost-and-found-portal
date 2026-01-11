@@ -4,20 +4,9 @@
     <meta charset="UTF-8">
     <title>Collected Items</title>
     <link rel="stylesheet" href="style.css">
-    <!-- 
-      IMPORTANT: We include two script files.
-      1. api.js: This file contains all the functions that communicate with our server.
-      2. script.js: This file will contain the logic specifically for this page.
-      'api.js' MUST be included before 'script.js' so its functions are available.
-    -->
     <script src="api.js" defer></script>
     <script src="script.js" defer></script>
 </head>
-<!-- 
-  REMOVED: The onload="renderItems(...)" attribute.
-  Our new script.js will handle fetching data from the server and
-  populating the grid when the page loads.
--->
 <body>
     <div class="page">
         <h1>Collected Items</h1>

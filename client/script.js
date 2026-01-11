@@ -1,6 +1,4 @@
 // --- MAIN ENTRY POINT ---
-// This is the core of our script. It waits for the HTML document to be fully loaded
-// before trying to run any code that interacts with the page.
 document.addEventListener('DOMContentLoaded', () => {
     // This "router" checks which page is currently active by looking for a unique
     // element ID and then runs the appropriate initialization function.
@@ -46,11 +44,8 @@ function initializeRegisterPage() {
         try {
             // Call the registerTeacher function from our api.js file.
             await registerTeacher(firstName, lastName, email, password);
-            // If registration is successful, the user is automatically logged in
-            // (token is saved), so we can redirect them straight to the dashboard.
             window.location.href = 'admin-dashboard.html';
         } catch (error) {
-            // If registration fails (e.g., email already in use), display the error.
             errorMessage.textContent = error.message;
         }
     });
